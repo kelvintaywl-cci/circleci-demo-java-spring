@@ -4,3 +4,4 @@ pluginManagement {
     }
 }
 rootProject.name = 'demo'
+systemProp.jdk.tls.client.protocols="TLSv1,TLSv1.1,TLSv1.2
