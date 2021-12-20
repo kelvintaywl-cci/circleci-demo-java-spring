@@ -15,7 +15,7 @@ jobs:
       - restore_cache:
           key: v1-gradle-cache-{{ checksum "build.gradle" }}
       - run: |
-          ./gradlew clean bootJar
+          ./gradlew bootJar
       - run:
           name: Install dependencies
           command: ./gradlew build -x test
