@@ -5,34 +5,16 @@ jobs:
     circleci_ip_ranges: true
     environment:
       # Configure the JVM and Gradle to avoid OOM errors
-      _JAVA_OPTIONS: "-Xmx3g"
-      GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2"
+      #_JAVA_OPTIONS: "-Xmx3g"
+      #GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2"
     docker:
-      - image: circleci/openjdk:11-jdk-stretch
+      #- image: circleci/openjdk:11-jdk-stretch
+      - image: circleci/openjdk:11-jdk-buster
     steps:
       - checkout
-      - restore_cache:
-          key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
-      - restore_cache:
-          key: v1-gradle-cache-{{ checksum "build.gradle" }}
       - run: |
           ./gradlew bootJar
-      - run:
-          name: Install dependencies
-          command: ./gradlew build -x test
-      - save_cache:
-          paths:
-            - ~/.gradle/wrapper
-          key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
-      - save_cache:
-          paths:
-            - ~/.gradle/caches
-          key: v1-gradle-cache-{{ checksum "build.gradle" }}
-      - persist_to_workspace:
-          root: .
-          paths:
-            - build
-            
+
 workflows:
   version: 2
   workflow:
