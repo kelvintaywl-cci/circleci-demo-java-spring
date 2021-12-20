@@ -30,28 +30,11 @@ executors:
  docker-executor:
    docker:
      - image: circleci/openjdk:11-jdk-stretch
- machine-executor:
-   machine:
-     image: ubuntu-1604:201903-01
 
 jobs:
-  test-with-docker:
-    executor: docker-executor
-    steps:
-      - test
-
   build-with-docker:
+    circleci_ip_ranges: true
     executor: docker-executor
-    steps:
-      - build
-
-  test-with-machine:
-    executor: machine-executor
-    steps:
-      - test
-
-  build-with-machine:
-    executor: machine-executor
     steps:
       - build
 
@@ -60,13 +43,3 @@ workflows:
   build-then-test-with-docker:
     jobs:
       - build-with-docker
-      - test-with-docker:
-          requires:
-            - build-with-docker
-
-  build-then-test-with-machine:
-    jobs:
-      - build-with-machine
-      - test-with-machine:
-          requires:
-            - build-with-machine
