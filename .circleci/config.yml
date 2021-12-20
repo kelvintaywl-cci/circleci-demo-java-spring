@@ -36,7 +36,10 @@ jobs:
     circleci_ip_ranges: true
     executor: docker-executor
     steps:
-      - build
+      #- build
+      - checkout
+      - run: curl ifconfig.co
+      - run: ./gradlew clean bootJar
 
 
 workflows:
