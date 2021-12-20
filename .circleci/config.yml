@@ -38,7 +38,7 @@ jobs:
     steps:
       #- build
       - checkout
-      - run: curl ifconfig.co
+      #- run: curl ifconfig.co
       - run: ./gradlew clean bootJar
 
 
