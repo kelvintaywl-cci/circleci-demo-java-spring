@@ -1,8 +1,8 @@
 version: 2
 jobs:
   build:
-    parallelism: 15
-    #circleci_ip_ranges: true
+    parallelism: 4
+    circleci_ip_ranges: true
     environment:
       # Configure the JVM and Gradle to avoid OOM errors
       #_JAVA_OPTIONS: "-Xmx3g"
