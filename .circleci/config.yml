@@ -1,12 +1,7 @@
-version: 2
+version: 2.1
+
 jobs:
   build:
-    parallelism: 4
-    circleci_ip_ranges: true
-    environment:
-      # Configure the JVM and Gradle to avoid OOM errors
-      #_JAVA_OPTIONS: "-Xmx3g"
-      #GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2"
     docker:
       #- image: circleci/openjdk:11-jdk-stretch
       - image: cimg/openjdk:13.0
